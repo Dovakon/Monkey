@@ -21,8 +21,8 @@ public class PlayerController : MonoBehaviour {
         animator = GetComponent<Animator>();
         rigibody = GetComponent<Rigidbody2D>();
     }
-	
-	void Update ()
+
+    void Update()
     {
 
 
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour {
                 animator.SetBool("Run_02", true);
                 animator.SetBool("Idle_01", false);
             }
-            
+
             transform.position += new Vector3(translation, 0, 0);
         }
         else
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour {
         }
 
 
-        if(Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump"))
         {
             rigibody.velocity = Vector2.up * jumpVelocity;
             animator.SetBool("Run_02", false);
@@ -61,9 +61,16 @@ public class PlayerController : MonoBehaviour {
 
         }
 
-        if(rigibody.velocity.y < 0)
+        if (rigibody.velocity.y < 0)
         {
-            rigibody.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;  
+            rigibody.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
+
+
+        if (Input.GetButton("Cancel"))
+        {
+            Application.Quit();
+        }
+
     }
 }

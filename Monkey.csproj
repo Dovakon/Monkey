@@ -92,7 +92,9 @@
     <Compile Include="Assets\_Code\BuzzSaw.cs" />
     <Compile Include="Assets\_Code\CameraController.cs" />
     <Compile Include="Assets\_Code\Coin.cs" />
+    <Compile Include="Assets\_Code\Flag.cs" />
     <Compile Include="Assets\_Code\GameManager.cs" />
+    <Compile Include="Assets\_Code\HandleData.cs" />
     <Compile Include="Assets\_Code\HandleScore.cs" />
     <Compile Include="Assets\_Code\Moving Platform\FollowPath.cs" />
     <Compile Include="Assets\_Code\Moving Platform\PathDefinition.cs" />

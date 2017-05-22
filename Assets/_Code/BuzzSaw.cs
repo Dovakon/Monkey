@@ -10,7 +10,7 @@ public class BuzzSaw : MonoBehaviour
     {
         if (col.gameObject.tag == "player")
         {
-            print("Damage Taken");
+           
             GameManager.HandleScore(-Damage);
         }
     }

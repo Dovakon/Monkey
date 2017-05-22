@@ -2,20 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameController : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
 
 
-    private Animator animator;
-
+    
     public int Speed;
+    public int jumpVelocity;
+    public int fallMultiplier;
+
 
 
     private float translation;
 
-	void Start () {
+    private Animator animator;
+    private Rigidbody2D rigibody;
+    void Start () {
 
-        animator = this.gameObject.GetComponent<Animator>();
-
+        animator = GetComponent<Animator>();
+        rigibody = GetComponent<Rigidbody2D>();
     }
 	
 	void Update ()
@@ -47,5 +51,19 @@ public class GameController : MonoBehaviour {
             animator.SetBool("Idle_01", true);
         }
 
+
+        if(Input.GetButtonDown("Jump"))
+        {
+            rigibody.velocity = Vector2.up * jumpVelocity;
+            animator.SetBool("Run_02", false);
+            animator.SetBool("Idle_01", false);
+            animator.SetBool("Jump_01", true);
+
+        }
+
+        if(rigibody.velocity.y < 0)
+        {
+            rigibody.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;  
+        }
     }
 }

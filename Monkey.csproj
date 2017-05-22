@@ -89,10 +89,14 @@
     <Compile Include="Assets\Gordo\Prefabs\DALogo\Scripts\DALogo.cs" />
     <Compile Include="Assets\Gordo\Prefabs\DASkeleton\Scripts\DALimb.cs" />
     <Compile Include="Assets\Gordo\Prefabs\DASkeleton\Scripts\DASkeleton.cs" />
-    <Compile Include="Assets\_Code\GameController.cs" />
-    <Compile Include="Assets\_Code\Level Manager\InstaKill.cs" />
+    <Compile Include="Assets\_Code\BuzzSaw.cs" />
+    <Compile Include="Assets\_Code\CameraController.cs" />
+    <Compile Include="Assets\_Code\Coin.cs" />
+    <Compile Include="Assets\_Code\GameManager.cs" />
+    <Compile Include="Assets\_Code\HandleScore.cs" />
     <Compile Include="Assets\_Code\Moving Platform\FollowPath.cs" />
     <Compile Include="Assets\_Code\Moving Platform\PathDefinition.cs" />
+    <Compile Include="Assets\_Code\PlayerController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Platform Game Assets\Readme.txt" />

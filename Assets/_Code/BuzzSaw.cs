@@ -11,7 +11,7 @@ public class BuzzSaw : MonoBehaviour
         if (col.gameObject.tag == "player")
         {
            
-            GameManager.HandleScore(-Damage);
+            GameManager.EnterTrap(-Damage);
         }
     }
 }

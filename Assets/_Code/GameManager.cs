@@ -10,8 +10,15 @@ public class GameManager : MonoBehaviour
     public Text score;
     public Text timer;
 
+    public Transform player;
+    public HandleData data;
+
+    public float FinalScore;
+
     private int scoreNumber;
     private float startTime;
+    private float currentTime;
+    private int lifes = 5;
 
     private static GameManager gameManager;
 
@@ -36,28 +43,57 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         startTime = Time.time;
+        StartCoroutine(ShowScore());
+        
     }
 
     private void Update()
     {
-        float t = Time.time - startTime;
-        string minutes = ((int)t / 60).ToString();
-        string seconds = (t % 60).ToString("f2");
+         currentTime = Time.time - startTime;
+        string minutes = ((int)currentTime / 60).ToString();
+        string seconds = (currentTime % 60).ToString("f2");
 
         timer.text = minutes + ":" + seconds; 
     }
 
-    public static void HandleScore(int score)
+    public static void CoinAdded(int score)
     {
         instance.scoreNumber += score;
-        instance.score.text = instance.scoreNumber.ToString();
     }
 
-    public static void ReachFlag()
+
+    IEnumerator ShowScore()
     {
+        while(true)
+        {
+            yield return new WaitForSeconds(1);
+            instance.scoreNumber --;
+            instance.score.text = instance.scoreNumber.ToString();
+        }
+    }
+
+    public static void EnterTrap(int damage)
+    {
+        instance.scoreNumber = instance.scoreNumber * damage / 100;
+        instance.lifes--;
+        if(instance.lifes <= 0)
+        {
+            instance.scoreNumber = 0;
+            NewEpisode();
+        }
+    }
+
+    public static void NewEpisode()
+    {
+        instance.data.WriteText(instance.scoreNumber);
+        //instance.player.position = new Vector2(0, 0);
+
+        //PlayerPrefs.SetInt("Episode", 0);
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
+        
     }
- 
+    
+    
     
 }

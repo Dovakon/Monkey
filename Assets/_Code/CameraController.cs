@@ -29,6 +29,7 @@ public class CameraController : MonoBehaviour
     {
         var x = transform.position.x;
         var y = transform.position.y;
+        
 
         if (IsFollowing)
         {

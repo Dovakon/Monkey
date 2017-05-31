@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Flag : MonoBehaviour {
 
+    
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        GameManager.ReachFlag();
+        GameManager.NewEpisode();
+        
     }
 }

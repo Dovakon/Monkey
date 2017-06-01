@@ -14,11 +14,11 @@ public class PlayerController : MonoBehaviour {
 
     private float translation;
     private bool canJump = true;
-    //private Animator animator;
+    private Animator animator;
     private Rigidbody2D rigibody;
     void Start () {
 
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         rigibody = GetComponent<Rigidbody2D>();
 
     }
@@ -80,13 +80,9 @@ public class PlayerController : MonoBehaviour {
        
     }
 
-    void OnTriggerEnter2D(Collider2D coll)
+    public void GetHit()
     {
-        if (coll.gameObject.tag == "Ground")
-        {
-            canJump = true;
-        }
-        
+        animator.Play("Damage");
     }
 
     private void OnCollisionEnter2D(Collision2D coll)

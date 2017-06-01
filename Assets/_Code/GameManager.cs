@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public Text score;
     public Text timer;
 
-    public Transform player;
+    public PlayerController player;
     public HandleData data;
 
     public float FinalScore;
@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
     public static void CoinAdded(int score)
     {
         instance.scoreNumber += score;
+        instance.score.text = instance.scoreNumber.ToString();
     }
 
 
@@ -66,7 +67,7 @@ public class GameManager : MonoBehaviour
     {
         while(true)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(3);
             instance.scoreNumber --;
             instance.score.text = instance.scoreNumber.ToString();
         }
@@ -75,8 +76,11 @@ public class GameManager : MonoBehaviour
     public static void EnterTrap(int damage)
     {
         instance.scoreNumber = instance.scoreNumber * damage / 100;
+        instance.score.text = instance.scoreNumber.ToString();
         instance.lifes--;
-        if(instance.lifes <= 0)
+        instance.player.GetHit();
+
+        if (instance.lifes <= 0)
         {
             instance.scoreNumber = 0;
             NewEpisode();
